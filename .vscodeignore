@@ -1,12 +1,14 @@
 .vscode/**
 .vscode-test/**
-out/test/**
+out/**
 test/**
 src/**
+node_modules/**
 **/*.map
 .gitignore
 package-lock.json
 tsconfig.json
+esbuild.js
 **/*.gif
 docs
 .github

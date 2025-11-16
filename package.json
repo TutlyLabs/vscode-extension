@@ -6,6 +6,11 @@
     "author": "Tutly",
     "publisher": "Tutly",
     "icon": "resources/tutly.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TutlyLabs/vscode-extension"
+    },
+    "license": "Apache-2.0",
     "engines": {
         "vscode": "^1.57.0"
     },
@@ -21,7 +26,7 @@
         "coding"
     ],
     "activationEvents": [],
-    "main": "./out/src/extension",
+    "main": "./dist/extension",
     "contributes": {
         "commands": [
             {
@@ -153,17 +158,23 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
+        "vscode:prepublish": "npm run package",
+        "compile": "npm run check-types && node esbuild.js",
+        "check-types": "tsc --noEmit",
+        "watch": "npm-run-all -p watch:*",
+        "watch:esbuild": "node esbuild.js --watch",
+        "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+        "package": "npm run check-types && node esbuild.js --production",
         "build": "vsce package",
-        "vs-publish": "vsce publish"
+        "publish": "vsce publish"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.11",
         "@types/markdown-it": "0.0.7",
         "@types/node": "^14.14.33",
         "@types/vscode": "1.57.0",
+        "esbuild": "^0.27.0",
+        "npm-run-all": "^4.1.5",
         "typescript": "^4.3.2"
     },
     "dependencies": {
