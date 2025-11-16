@@ -1,5 +1,5 @@
 import { Command, Uri } from "vscode";
-import { IAssignment, AssignmentState } from "../shared";
+import { IAssignment, AssignmentState } from "../types/shared";
 
 export class TutlyNode {
 

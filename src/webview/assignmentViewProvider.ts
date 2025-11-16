@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import { AssignmentState, IAssignment } from "../shared";
+import { AssignmentState, IAssignment } from "../types/shared";
 import { markdownEngine } from "./markdownEngine";
 import { createAPIClient } from "../utils/api";
-import { tutlyChannel } from "../channel";
+import { tutlyChannel } from "../core/channel";
 
 class AssignmentViewProvider implements vscode.WebviewViewProvider {
     public static readonly viewType = "tutlyAssignmentView";

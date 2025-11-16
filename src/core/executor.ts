@@ -1,6 +1,6 @@
 import { ExtensionContext } from "vscode";
 import { Disposable } from "vscode";
-import { createAPIClient } from "./utils/api";
+import { createAPIClient } from "../utils/api";
 
 class TutlyExecutor implements Disposable {
     public async meetRequirements(_context: ExtensionContext): Promise<boolean> {

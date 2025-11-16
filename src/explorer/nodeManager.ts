@@ -1,9 +1,9 @@
 import { Disposable } from "vscode";
-import { defaultAssignment, AssignmentState } from "../shared";
+import { defaultAssignment, AssignmentState } from "../types/shared";
 import { TutlyNode } from "./node";
 import { createAPIClient, ICourse, IAssignmentAPI } from "../utils/api";
 import { getCurrentUser } from "../utils/auth";
-import { tutlyChannel } from "../channel";
+import { tutlyChannel } from "../core/channel";
 
 class ExplorerNodeManager implements Disposable {
     private explorerNodeMap: Map<string, TutlyNode> = new Map<string, TutlyNode>();

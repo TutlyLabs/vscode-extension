@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { UserStatus } from "../shared";
+import { UserStatus } from "../types/shared";
 
 export class TutlyStatusBarItem implements vscode.Disposable {
     private readonly statusBarItem: vscode.StatusBarItem;

@@ -1,5 +1,5 @@
 import { commands, ViewColumn } from "vscode";
-import { IAssignment } from "../shared";
+import { IAssignment } from "../types/shared";
 import { ITutlyWebviewOption, TutlyWebview } from "./webview";
 import { markdownEngine } from "./markdownEngine";
 

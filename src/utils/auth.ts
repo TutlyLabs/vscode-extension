@@ -1,6 +1,6 @@
-import { globalState } from "../globalState";
-import { tutlyChannel } from "../channel";
-import { API_BASE_URL, USER_AGENT } from "../config";
+import { globalState } from "../core/globalState";
+import { tutlyChannel } from "../core/channel";
+import { API_BASE_URL, USER_AGENT } from "./config";
 
 interface ISignInResponse {
     token: string;

@@ -1,10 +1,10 @@
 import { EventEmitter } from "events";
 import * as vscode from "vscode";
 import { tutlyChannel } from "./channel";
-import { UserStatus } from "./shared";
-import { DialogType, promptForOpenOutputChannel } from "./utils/ui";
+import { UserStatus } from "../types/shared";
+import { DialogType, promptForOpenOutputChannel } from "../utils/ui";
 import { globalState } from "./globalState";
-import * as authUtils from "./utils/auth";
+import * as authUtils from "../utils/auth";
 
 class TutlyManager extends EventEmitter {
     private currentUser: string | undefined;

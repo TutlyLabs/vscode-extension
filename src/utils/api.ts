@@ -1,5 +1,5 @@
-import { globalState } from "../globalState";
-import { API_BASE_URL, USER_AGENT } from "../config";
+import { globalState } from "../core/globalState";
+import { API_BASE_URL, USER_AGENT } from "./config";
 
 export interface ICourse {
     id: string;

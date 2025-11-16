@@ -3,7 +3,7 @@ const MarkdownIt = require("markdown-it");
 import * as os from "os";
 import * as path from "path";
 import * as vscode from "vscode";
-import { tutlyChannel } from "../channel";
+import { tutlyChannel } from "../core/channel";
 import { isWindows } from "../utils/os";
 
 class MarkdownEngine implements vscode.Disposable {

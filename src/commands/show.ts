@@ -2,9 +2,9 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { explorerNodeManager } from "../explorer/nodeManager";
 import { TutlyNode } from "../explorer/node";
-import { tutlyChannel } from "../channel";
-import { tutlyManager } from "../manager";
-import { IAssignment, IQuickItemEx, AssignmentState } from "../shared";
+import { tutlyChannel } from "../core/channel";
+import { tutlyManager } from "../core/manager";
+import { IAssignment, IQuickItemEx, AssignmentState } from "../types/shared";
 import { promptForSignIn } from "../utils/ui";
 import { getAssignmentViewProvider } from "../webview/assignmentViewProvider";
 
@@ -93,7 +93,7 @@ async function showAssignmentInternal(node: IAssignment): Promise<void> {
             const folderUri = vscode.Uri.file(assignmentFolder);
 
             // Store assignment ID in global state
-            const { globalState } = await import("../globalState");
+            const { globalState } = await import("../core/globalState");
             globalState.setCurrentAssignmentId(node.id);
 
             // Open folder in current window
@@ -119,7 +119,7 @@ async function showAssignmentInternal(node: IAssignment): Promise<void> {
         );
 
         // Store assignment ID in global state
-        const { globalState } = await import("../globalState");
+        const { globalState } = await import("../core/globalState");
         globalState.setCurrentAssignmentId(node.id);
 
         // Open folder in current window

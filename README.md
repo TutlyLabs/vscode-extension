@@ -24,8 +24,7 @@ Sign in with your Tutly account to view courses and assignments in the sidebar. 
 ## Requirements
 
 VS Code 1.57.0 or higher and a Tutly account.
-
 ## Questions?
 
-Visit [learn.tutly.in](https://learn.tutly.in) for support.
+Visit [learn.tutly.in](https://learn.tutly.in) for support or contact us at [support@tutly.in](mailto:support@tutly.in).
 

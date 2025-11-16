@@ -3,14 +3,14 @@ import * as show from "./commands/show";
 import { explorerNodeManager } from "./explorer/nodeManager";
 import { TutlyNode } from "./explorer/node";
 import { tutlyTreeDataProvider } from "./explorer/treeDataProvider";
-import { tutlyChannel } from "./channel";
-import { tutlyExecutor } from "./executor";
-import { tutlyManager } from "./manager";
+import { tutlyChannel } from "./core/channel";
+import { tutlyExecutor } from "./core/executor";
+import { tutlyManager } from "./core/manager";
 import { tutlyStatusBarController } from "./statusbar/controller";
 import { DialogType, promptForOpenOutputChannel } from "./utils/ui";
 import { tutlyPreviewProvider } from "./webview/previewProvider";
 import { markdownEngine } from "./webview/markdownEngine";
-import { globalState } from "./globalState";
+import { globalState } from "./core/globalState";
 import { initializeWelcomeView, welcomeViewProvider } from "./webview/welcomeView";
 import { initializeAssignmentView } from "./webview/assignmentViewProvider";
 

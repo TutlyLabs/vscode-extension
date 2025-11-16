@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { tutlyChannel } from "../channel";
+import { tutlyChannel } from "../core/channel";
 
 export namespace DialogOptions {
     export const open: vscode.MessageItem = { title: "Open" };

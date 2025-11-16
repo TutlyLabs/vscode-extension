@@ -1,6 +1,6 @@
 import * as os from "os";
 import * as vscode from "vscode";
-import { AssignmentState } from "../shared";
+import { AssignmentState } from "../types/shared";
 import { explorerNodeManager } from "./nodeManager";
 import { TutlyNode } from "./node";
 
