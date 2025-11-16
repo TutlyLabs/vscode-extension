@@ -1,0 +1,175 @@
+{
+    "name": "vscode-tutly",
+    "displayName": "Tutly",
+    "description": "View and solve coding assignments from Tutly directly in VS Code",
+    "version": "0.1.0",
+    "author": "Tutly",
+    "publisher": "Tutly",
+    "icon": "resources/tutly.png",
+    "engines": {
+        "vscode": "^1.57.0"
+    },
+    "categories": [
+        "Education",
+        "Other"
+    ],
+    "keywords": [
+        "tutly",
+        "assignments",
+        "education",
+        "learning",
+        "coding"
+    ],
+    "activationEvents": [],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "tutly.signin",
+                "title": "Sign In",
+                "category": "Tutly",
+                "icon": "$(sign-in)"
+            },
+            {
+                "command": "tutly.signout",
+                "title": "Sign Out",
+                "category": "Tutly",
+                "icon": "$(sign-out)"
+            },
+            {
+                "command": "tutly.refreshExplorer",
+                "title": "Refresh",
+                "category": "Tutly",
+                "icon": "$(refresh)"
+            },
+            {
+                "command": "tutly.showProblem",
+                "title": "Solve Problem",
+                "category": "Tutly",
+                "icon": "$(folder-opened)"
+            },
+            {
+                "command": "tutly.previewProblem",
+                "title": "Preview Problem",
+                "category": "Tutly",
+                "icon": "$(eye)"
+            },
+            {
+                "command": "tutly.searchProblem",
+                "title": "Search Problem",
+                "category": "Tutly",
+                "icon": "$(search)"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "tutly",
+                    "title": "Tutly",
+                    "icon": "resources/code-outline.png"
+                }
+            ]
+        },
+        "views": {
+            "tutly": [
+                {
+                    "id": "tutlyWelcome",
+                    "name": "Welcome",
+                    "type": "webview",
+                    "when": "!tutly.signedIn"
+                },
+                {
+                    "id": "tutlyExplorer",
+                    "name": "Problems",
+                    "icon": "$(list-unordered)",
+                    "when": "tutly.signedIn"
+                }
+            ]
+        },
+        "menus": {
+            "view/title": [
+                {
+                    "command": "tutly.signin",
+                    "when": "view == tutlyExplorer && !tutly.signedIn",
+                    "group": "navigation@0"
+                },
+                {
+                    "command": "tutly.searchProblem",
+                    "when": "view == tutlyExplorer && tutly.signedIn",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "tutly.refreshExplorer",
+                    "when": "view == tutlyExplorer && tutly.signedIn",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "tutly.signout",
+                    "when": "view == tutlyExplorer && tutly.signedIn",
+                    "group": "overflow@1"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "tutly.previewProblem",
+                    "when": "view == tutlyExplorer && viewItem =~ /problem*/",
+                    "group": "inline@1"
+                },
+                {
+                    "command": "tutly.showProblem",
+                    "when": "view == tutlyExplorer && viewItem =~ /problem*/",
+                    "group": "inline@2"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "tutly.showProblem",
+                    "when": "never"
+                },
+                {
+                    "command": "tutly.previewProblem",
+                    "when": "never"
+                }
+            ]
+        },
+        "configuration": [
+            {
+                "title": "Tutly",
+                "properties": {
+                    "tutly.enableStatusBar": {
+                        "type": "boolean",
+                        "default": true,
+                        "scope": "application",
+                        "description": "Show the Tutly status bar."
+                    },
+                    "tutly.enableSideMode": {
+                        "type": "boolean",
+                        "default": true,
+                        "scope": "application",
+                        "description": "Determine whether to group all webview pages into the second editor column when viewing assignments."
+                    }
+                }
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "build": "vsce package",
+        "vs-publish": "vsce publish"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^9.0.11",
+        "@types/markdown-it": "0.0.7",
+        "@types/node": "^14.14.33",
+        "@types/vscode": "1.57.0",
+        "typescript": "^4.3.2"
+    },
+    "dependencies": {
+        "axios": "^1.6.8",
+        "fs-extra": "^10.0.0",
+        "highlight.js": "^10.7.2",
+        "markdown-it": "^8.4.2"
+    }
+}

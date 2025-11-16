@@ -1,0 +1,34 @@
+import * as vscode from "vscode";
+import { UserStatus } from "../shared";
+
+export class TutlyStatusBarItem implements vscode.Disposable {
+    private readonly statusBarItem: vscode.StatusBarItem;
+
+    constructor() {
+        this.statusBarItem = vscode.window.createStatusBarItem();
+    }
+
+    public updateStatusBar(status: UserStatus, user?: string): void {
+        switch (status) {
+            case UserStatus.SignedIn:
+                this.statusBarItem.text = `Tutly: ${user}`;
+                break;
+            case UserStatus.SignedOut:
+            default:
+                this.statusBarItem.text = "";
+                break;
+        }
+    }
+
+    public show(): void {
+        this.statusBarItem.show();
+    }
+
+    public hide(): void {
+        this.statusBarItem.hide();
+    }
+
+    public dispose(): void {
+        this.statusBarItem.dispose();
+    }
+}
