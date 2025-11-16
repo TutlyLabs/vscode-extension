@@ -2,7 +2,7 @@
     "name": "vscode-tutly",
     "displayName": "Tutly",
     "description": "View and solve coding assignments from Tutly directly in VS Code",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "author": "Tutly",
     "publisher": "Tutly",
     "icon": "resources/tutly.png",
