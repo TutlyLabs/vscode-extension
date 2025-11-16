@@ -29,20 +29,44 @@ export class TutlyTreeDataProvider implements vscode.TreeDataProvider<TutlyNode>
     public getTreeItem(element: TutlyNode): vscode.TreeItem | Thenable<vscode.TreeItem> {
         let contextValue: string;
         if (element.isProblem) {
-            contextValue = "problem";
+            // Check if folder exists for this assignment
+            const path = require("path");
+            const fs = require("fs");
+            const baseFolder = path.join(require("os").homedir(), ".tutly", "assignments");
+            const assignmentFolder = path.join(baseFolder, element.id);
+            const folderExists = fs.existsSync(assignmentFolder);
+
+            // Set contextValue based on folder existence
+            contextValue = folderExists ? "assignment-downloaded" : "assignment";
+
+            // Add in-progress label if folder exists but not submitted
+            let label = element.name;
+            if (folderExists && element.state !== AssignmentState.Submitted) {
+                label = `${element.name} (In Progress)`;
+            }
+
+            return {
+                label,
+                tooltip: this.getSubCategoryTooltip(element),
+                collapsibleState: vscode.TreeItemCollapsibleState.None,
+                iconPath: this.parseIconPathFromAssignmentState(element),
+                command: element.previewCommand,
+                resourceUri: element.uri,
+                contextValue,
+            };
         } else {
             contextValue = element.id.toLowerCase();
-        }
 
-        return {
-            label: element.name,
-            tooltip: this.getSubCategoryTooltip(element),
-            collapsibleState: element.isProblem ? vscode.TreeItemCollapsibleState.None : vscode.TreeItemCollapsibleState.Collapsed,
-            iconPath: this.parseIconPathFromProblemState(element),
-            command: element.isProblem ? element.previewCommand : undefined,
-            resourceUri: element.uri,
-            contextValue,
-        };
+            return {
+                label: element.name,
+                tooltip: this.getSubCategoryTooltip(element),
+                collapsibleState: vscode.TreeItemCollapsibleState.Collapsed,
+                iconPath: this.parseIconPathFromAssignmentState(element),
+                command: undefined,
+                resourceUri: element.uri,
+                contextValue,
+            };
+        }
     }
 
     public getChildren(element?: TutlyNode | undefined): vscode.ProviderResult<TutlyNode[]> {
@@ -76,7 +100,7 @@ export class TutlyTreeDataProvider implements vscode.TreeDataProvider<TutlyNode>
         }
     }
 
-    private parseIconPathFromProblemState(element: TutlyNode): vscode.ThemeIcon | string {
+    private parseIconPathFromAssignmentState(element: TutlyNode): vscode.ThemeIcon | string {
         if (!element.isProblem) {
             return "";
         }

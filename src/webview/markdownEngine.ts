@@ -70,6 +70,7 @@ class MarkdownEngine implements vscode.Disposable {
 
     private initEngine(): any {
         const md: any = new (MarkdownIt as any)({
+            html: true,
             linkify: true,
             typographer: true,
             highlight: (code: string, lang?: string): string => {

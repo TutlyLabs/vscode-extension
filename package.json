@@ -48,22 +48,40 @@
                 "icon": "$(refresh)"
             },
             {
-                "command": "tutly.showProblem",
-                "title": "Solve Problem",
+                "command": "tutly.showAssignment",
+                "title": "Solve Assignment",
                 "category": "Tutly",
                 "icon": "$(folder-opened)"
             },
             {
-                "command": "tutly.previewProblem",
-                "title": "Preview Problem",
+                "command": "tutly.previewAssignment",
+                "title": "Preview Assignment",
                 "category": "Tutly",
                 "icon": "$(eye)"
             },
             {
-                "command": "tutly.searchProblem",
-                "title": "Search Problem",
+                "command": "tutly.searchAssignment",
+                "title": "Search Assignment",
                 "category": "Tutly",
                 "icon": "$(search)"
+            },
+            {
+                "command": "tutly.deleteAssignment",
+                "title": "Delete Assignment Folder",
+                "category": "Tutly",
+                "icon": "$(trash)"
+            },
+            {
+                "command": "tutly.backToAssignments",
+                "title": "Back to Assignments",
+                "category": "Tutly",
+                "icon": "$(arrow-left)"
+            },
+            {
+                "command": "tutly.showAssignmentPreview",
+                "title": "Show Assignment Preview",
+                "category": "Tutly",
+                "icon": "$(eye)"
             }
         ],
         "viewsContainers": {
@@ -85,9 +103,15 @@
                 },
                 {
                     "id": "tutlyExplorer",
-                    "name": "Problems",
+                    "name": "Assignments",
                     "icon": "$(list-unordered)",
-                    "when": "tutly.signedIn"
+                    "when": "tutly.signedIn && !tutly.assignmentSelected"
+                },
+                {
+                    "id": "tutlyAssignmentView",
+                    "name": "Assignment Preview",
+                    "type": "webview",
+                    "when": "tutly.signedIn && tutly.assignmentSelected"
                 }
             ]
         },
@@ -99,14 +123,24 @@
                     "group": "navigation@0"
                 },
                 {
-                    "command": "tutly.searchProblem",
-                    "when": "view == tutlyExplorer && tutly.signedIn",
+                    "command": "tutly.backToAssignments",
+                    "when": "view == tutlyAssignmentView",
+                    "group": "navigation@0"
+                },
+                {
+                    "command": "tutly.showAssignmentPreview",
+                    "when": "view == tutlyExplorer && tutly.signedIn && tutly.hasAssignmentInFolder",
                     "group": "navigation@1"
+                },
+                {
+                    "command": "tutly.searchAssignment",
+                    "when": "view == tutlyExplorer && tutly.signedIn",
+                    "group": "navigation@2"
                 },
                 {
                     "command": "tutly.refreshExplorer",
                     "when": "view == tutlyExplorer && tutly.signedIn",
-                    "group": "navigation@2"
+                    "group": "navigation@3"
                 },
                 {
                     "command": "tutly.signout",
@@ -116,23 +150,45 @@
             ],
             "view/item/context": [
                 {
-                    "command": "tutly.previewProblem",
-                    "when": "view == tutlyExplorer && viewItem =~ /problem*/",
+                    "command": "tutly.previewAssignment",
+                    "when": "view == tutlyExplorer && viewItem =~ /assignment.*/",
                     "group": "inline@1"
                 },
                 {
-                    "command": "tutly.showProblem",
-                    "when": "view == tutlyExplorer && viewItem =~ /problem*/",
+                    "command": "tutly.showAssignment",
+                    "when": "view == tutlyExplorer && viewItem == assignment",
                     "group": "inline@2"
+                },
+                {
+                    "command": "tutly.showAssignment",
+                    "when": "view == tutlyExplorer && viewItem == assignment-downloaded",
+                    "group": "inline@2"
+                },
+                {
+                    "command": "tutly.deleteAssignment",
+                    "when": "view == tutlyExplorer && viewItem == assignment-downloaded",
+                    "group": "inline@4"
                 }
             ],
             "commandPalette": [
                 {
-                    "command": "tutly.showProblem",
+                    "command": "tutly.showAssignment",
                     "when": "never"
                 },
                 {
-                    "command": "tutly.previewProblem",
+                    "command": "tutly.previewAssignment",
+                    "when": "never"
+                },
+                {
+                    "command": "tutly.deleteAssignment",
+                    "when": "never"
+                },
+                {
+                    "command": "tutly.backToAssignments",
+                    "when": "never"
+                },
+                {
+                    "command": "tutly.showAssignmentPreview",
                     "when": "never"
                 }
             ]

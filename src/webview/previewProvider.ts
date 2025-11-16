@@ -40,7 +40,7 @@ class TutlyPreviewProvider extends TutlyWebview {
             element: `<button id="solve">Code Now</button>`,
             script: `const button = document.getElementById('solve');
                     button.onclick = () => vscode.postMessage({
-                        command: 'ShowProblem',
+                        command: 'ShowAssignment',
                     });`,
             style: `<style>
                 #solve {
@@ -96,8 +96,8 @@ class TutlyPreviewProvider extends TutlyWebview {
 
     protected async onDidReceiveMessage(message: IWebViewMessage): Promise<void> {
         switch (message.command) {
-            case "ShowProblem": {
-                await commands.executeCommand("tutly.showProblem", this.node);
+            case "ShowAssignment": {
+                await commands.executeCommand("tutly.showAssignment", this.node);
                 break;
             }
         }

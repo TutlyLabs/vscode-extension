@@ -10,6 +10,7 @@ export interface IAuthTokens {
 class GlobalState {
     private context: vscode.ExtensionContext;
     private _state: vscode.Memento;
+    private currentAssignmentId: string | undefined;
 
     public initialize(context: vscode.ExtensionContext): void {
         this.context = context;
@@ -34,6 +35,14 @@ class GlobalState {
 
     public getUserStatus(): undefined {
         return undefined;
+    }
+
+    public getCurrentAssignmentId(): string | undefined {
+        return this.currentAssignmentId;
+    }
+
+    public setCurrentAssignmentId(assignmentId: string | undefined): void {
+        this.currentAssignmentId = assignmentId;
     }
 }
 

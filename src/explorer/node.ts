@@ -3,7 +3,7 @@ import { IAssignment, AssignmentState } from "../shared";
 
 export class TutlyNode {
 
-    constructor(private data: IAssignment, private isProblemNode: boolean = true) { }
+    constructor(private data: IAssignment, private isAssignmentNode: boolean = true) { }
 
     public get name(): string {
         return this.data.name;
@@ -18,7 +18,7 @@ export class TutlyNode {
     }
 
     public get isProblem(): boolean {
-        return this.isProblemNode;
+        return this.isAssignmentNode;
     }
 
     public get courseId(): string | undefined {
@@ -39,8 +39,8 @@ export class TutlyNode {
 
     public get previewCommand(): Command {
         return {
-            title: "Preview Problem",
-            command: "tutly.previewProblem",
+            title: "Preview Assignment",
+            command: "tutly.previewAssignment",
             arguments: [this.data],
         };
     }
@@ -48,7 +48,7 @@ export class TutlyNode {
     public get uri(): Uri {
         return Uri.from({
             scheme: "tutly",
-            authority: this.isProblem ? "problems" : "tree-node",
+            authority: this.isProblem ? "assignments" : "tree-node",
             path: `/${this.id}`,
         });
     }

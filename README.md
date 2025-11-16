@@ -1,55 +1,31 @@
 # Tutly for VS Code
 
-View and solve coding assignments from Tutly directly in Visual Studio Code.
+Access your Tutly assignments without leaving your code editor.
 
-## Features
+## What it does
 
-- 🔐 **Secure Authentication** - Sign in with your Tutly credentials
-- 📚 **Course Explorer** - Browse all your enrolled courses and assignments
-- 👁️ **Preview Assignments** - View assignment details in a rich webview
-- 💻 **Solve in Editor** - Open assignments and work on them directly in VS Code
-- 🔄 **Real-time Sync** - Automatically refresh assignments and submission status
-- 📊 **Progress Tracking** - See which assignments you've completed
+Sign in with your Tutly account to view courses and assignments in the sidebar. Preview assignment details, open them as folders, and submit your work—all from VS Code.
 
-## Getting Started
+## Getting started
 
-1. Install the extension from the VS Code marketplace
-2. Click on the Tutly icon in the Activity Bar
-3. Sign in with your Tutly username and password
-4. Browse your courses and start solving assignments!
+1. Click the Tutly icon in the sidebar
+2. Sign in with your credentials
+3. Select a course to see assignments
+4. Click an assignment to preview or open it
 
-## Usage
+## Working on assignments
 
-### Sign In
-Click the "Sign In" button in the Tutly view or use the command palette (`Cmd/Ctrl+Shift+P`) and search for "Tutly: Sign In".
+**Preview**: Click the eye icon to read the assignment details
 
-### Browse Assignments
-Once signed in, expand your courses in the Tutly Explorer to see all available assignments.
+**Open**: Click the folder icon to start coding. The assignment opens in a new folder where you can work on your solution.
 
-### Work on Assignments
-- **Preview**: Click the eye icon to preview assignment details
-- **Solve**: Click the folder icon to open and start working on the assignment
-
-### Refresh
-Click the refresh button to sync your latest courses and assignment statuses.
-
-## Configuration
-
-Access settings via `Preferences > Settings > Extensions > Tutly`:
-
-- `tutly.enableStatusBar` - Show/hide the Tutly status bar (default: true)
-- `tutly.enableSideMode` - Open assignment previews in a separate column (default: true)
+**Delete**: Remove downloaded assignments you no longer need
 
 ## Requirements
 
-- Visual Studio Code v1.57.0 or higher
-- Active Tutly account with enrolled courses
+VS Code 1.57.0 or higher and a Tutly account.
 
-## Support
+## Questions?
 
-For issues and questions, contact Tutly support or visit [learn.tutly.in](https://learn.tutly.in)
+Visit [learn.tutly.in](https://learn.tutly.in) for support.
 
----
-
-**Version**: 0.1.0
-**Author**: Tutly
